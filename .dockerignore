@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.git/
+.gitignore
+.env
+.env.example
+.zed/
+.prettierrc
+*.log
+*.md
+LICENSE
+docker-compose.yml
+Dockerfile

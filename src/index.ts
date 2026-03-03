@@ -2,7 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import errorMiddleware from "./middlewares/error.middleware";
-import identifyRouter from "./routes/indentify";
+import identifyRouter from "./routes/identify";
 
 dotenv.config();
 

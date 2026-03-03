@@ -9,12 +9,12 @@ export interface Contact {
   deletedAt: Date | null;
 }
 
-export interface IdentityRequest {
+export interface IdentifyRequest {
   email?: string | null;
   phoneNumber?: string | null;
 }
 
-export interface IdentityResponse {
+export interface IdentifyResponse {
   contact: {
     primaryContactId: number;
     emails: string[];

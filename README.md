@@ -134,6 +134,29 @@ Indexes on `email`, `phoneNumber`, and `linkedId` ensure fast lookups.
 - Docker + Docker Compose
 - pnpm
 
+## Live Demo
+
+**Base URL:** [`https://contactlink1-7ztl56x6.b4a.run`](https://contactlink1-7ztl56x6.b4a.run)
+
+> **Note:** This deployment is temporary and may be taken down after the evaluation period.
+
+Try it now:
+
+```sh
+# Health check
+curl https://contactlink1-7ztl56x6.b4a.run/health
+
+# Create a new contact
+curl -X POST https://contactlink1-7ztl56x6.b4a.run/identify \
+  -H "Content-Type: application/json" \
+  -d '{"email": "alice@example.com", "phoneNumber": "1234"}'
+
+# Link with new phone (creates secondary)
+curl -X POST https://contactlink1-7ztl56x6.b4a.run/identify \
+  -H "Content-Type: application/json" \
+  -d '{"email": "alice@example.com", "phoneNumber": "5678"}'
+```
+
 ## Getting Started
 
 ### Option A — Docker (recommended)

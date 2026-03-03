@@ -4,4 +4,9 @@
 // see the documentation: https://zed.dev/docs/configuring-zed#settings-files
 {
   "tab_size": 2,
+  "languages": {
+    "SQL": {
+      "tab_size": 4,
+    },
+  },
 }

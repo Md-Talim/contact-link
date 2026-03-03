@@ -1,6 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import errorMiddleware from "./middlewares/error.middleware";
 import identifyRouter from "./routes/indentify";
 
 dotenv.config();
@@ -16,6 +17,8 @@ app.use("/identify", identifyRouter);
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
 });
+
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);

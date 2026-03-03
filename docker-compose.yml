@@ -10,5 +10,16 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/contact_link
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
 volumes:
   pgdata:

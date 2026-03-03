@@ -80,9 +80,9 @@ export async function identify(req: IdentifyRequest): Promise<IdentifyResponse> 
     // Demote the primaries
     await pool.query(
       `UPDATE contacts
-       SET "linkPrecedence" = 'secondary'
-           "linkedId" = $1,
-           "updatedAt" = NOW()
+       SET "linkPrecedence" = 'secondary',
+           "linkedId"       = $1,
+           "updatedAt"      = NOW()
        WHERE id = ANY($2)`,
       [thePrimary.id, otherPrimaryIds],
     );
@@ -112,11 +112,11 @@ export async function identify(req: IdentifyRequest): Promise<IdentifyResponse> 
   const existingPhones = new Set(group.map((c) => c.phoneNumber).filter(Boolean));
 
   const hasNewEmail = email && !existingEmails.has(email);
-  const hasNewPhone = phoneNumber && existingPhones.has(phoneNumber);
+  const hasNewPhone = phoneNumber && !existingPhones.has(phoneNumber);
 
   if (hasNewEmail || hasNewPhone) {
     const insertSecondary = `
-      INSERT INTO contacts (email, "phoneNumber", "linkedId", "linkedPrecedence")
+      INSERT INTO contacts (email, "phoneNumber", "linkedId", "linkPrecedence")
       VALUES ($1, $2, $3, 'secondary')
       RETURNING *
     `;
